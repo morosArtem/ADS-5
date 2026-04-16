@@ -2,17 +2,19 @@
 #ifndef INCLUDE_TSTACK_H_
 #define INCLUDE_TSTACK_H_
 
-template<typename T, int size>
+#include <array>
+
+template<typename T, int kSize>
 class TStack {
  private:
-  T arr[size];
+  std::array<T, kSize> arr;
   int top_ind;
 
  public:
   TStack() : top_ind(-1) {}
 
   void push(T value) {
-    if (top_ind < size - 1) {
+    if (top_ind < kSize - 1) {
       arr[++top_ind] = value;
     }
   }
@@ -36,7 +38,7 @@ class TStack {
   }
 
   bool isFull() const {
-    return top_ind == size - 1;
+    return top_ind == kSize - 1;
   }
 };
 
